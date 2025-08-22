@@ -15,10 +15,10 @@ export default function Home() {
           TypeScript, and Tailwind CSS.
         </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
-          <Button size="lg" asChild>
+          <Button size="lg">
             <Link href="/products">Shop Now</Link>
           </Button>
-          <Button variant="outline" size="lg" asChild>
+          <Button variant="outline" size="lg">
             <Link href="/about">Learn More</Link>
           </Button>
         </div>
