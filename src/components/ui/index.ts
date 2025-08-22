@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from './button';
+import { Button, buttonVariants } from './Button';
 import {
   Card,
   CardHeader,
@@ -6,7 +6,7 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-} from './card';
+} from './Card';
 
 export {
   Button,
