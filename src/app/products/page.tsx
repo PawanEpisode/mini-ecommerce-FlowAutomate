@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ShoppingCart, Star } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Products',
@@ -69,28 +70,42 @@ export default function ProductsPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {sampleProducts.map((product) => (
-          <Card key={product.id} className="overflow-hidden">
-            <div className="bg-muted aspect-video">
+          <Card
+            key={product.id}
+            className="group overflow-hidden transition-all duration-200 hover:shadow-lg"
+          >
+            <div className="bg-muted aspect-square overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={product.image}
                 alt={product.name}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
               />
             </div>
-            <CardHeader>
-              <CardTitle className="text-xl">{product.name}</CardTitle>
-              <p className="text-primary text-2xl font-bold">
-                ${product.price}
-              </p>
+            <CardHeader className="pb-3">
+              <CardTitle className="line-clamp-2 text-lg">
+                {product.name}
+              </CardTitle>
+              <div className="flex items-center justify-between">
+                <p className="text-primary text-2xl font-bold">
+                  ${product.price}
+                </p>
+                <div className="flex items-center space-x-1">
+                  <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  <span className="text-muted-foreground text-sm">4.5</span>
+                </div>
+              </div>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
+            <CardContent className="pt-0">
+              <p className="text-muted-foreground mb-4 line-clamp-2 text-sm">
                 {product.description}
               </p>
-              <Button className="w-full">Add to Cart</Button>
+              <Button className="w-full" size="sm">
+                <ShoppingCart className="mr-2 h-4 w-4" />
+                Add to Cart
+              </Button>
             </CardContent>
           </Card>
         ))}

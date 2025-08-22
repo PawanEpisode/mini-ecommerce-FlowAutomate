@@ -1,4 +1,4 @@
-export { Button } from './Button';
+export { Button } from './button';
 export {
   Card,
   CardHeader,
@@ -6,4 +6,4 @@ export {
   CardTitle,
   CardDescription,
   CardContent,
-} from './Card';
+} from './card';

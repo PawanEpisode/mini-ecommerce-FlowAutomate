@@ -1,12 +1,12 @@
 export const SITE_CONFIG = {
-  name: 'Mini Ecommerce',
+  name: 'One Piece Kart',
   description:
     'Modern e-commerce application built with Next.js and Tailwind CSS',
-  url: 'https://mini-ecommerce.vercel.app',
-  ogImage: 'https://mini-ecommerce.vercel.app/og.jpg',
+  url: 'https://onepiecekart.vercel.app',
+  ogImage: 'https://onepiecekart.vercel.app/og.jpg',
   links: {
-    twitter: 'https://twitter.com/miniecommerce',
-    github: 'https://github.com/miniecommerce',
+    twitter: 'https://twitter.com/onepiecekart',
+    github: 'https://github.com/onepiecekart',
   },
 } as const;
 

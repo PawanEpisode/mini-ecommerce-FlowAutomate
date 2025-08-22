@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ShoppingCart, Github, Twitter } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -7,12 +8,29 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="col-span-1 md:col-span-2">
             <Link className="flex items-center space-x-2" href="/">
-              <span className="font-bold">Mini Ecommerce</span>
+              <ShoppingCart className="h-6 w-6" />
+              <span className="font-bold">One Piece Kart</span>
             </Link>
             <p className="text-muted-foreground mt-4 text-sm">
               Your modern e-commerce solution built with Next.js and Tailwind
               CSS.
             </p>
+            <div className="mt-4 flex space-x-4">
+              <Link
+                href="https://github.com/onepiecekart"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <Github className="h-5 w-5" />
+                <span className="sr-only">GitHub</span>
+              </Link>
+              <Link
+                href="https://twitter.com/onepiecekart"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <Twitter className="h-5 w-5" />
+                <span className="sr-only">Twitter</span>
+              </Link>
+            </div>
           </div>
           <div>
             <h3 className="font-semibold">Quick Links</h3>
@@ -74,7 +92,7 @@ export function Footer() {
           </div>
         </div>
         <div className="text-muted-foreground mt-8 border-t pt-8 text-center text-sm">
-          © 2024 Mini Ecommerce. All rights reserved.
+          © 2024 One Piece Kart. All rights reserved.
         </div>
       </div>
     </footer>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Target, Heart, Code, Zap, Shield, Palette, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -21,9 +22,14 @@ export default function AboutPage() {
         </div>
 
         <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2">
-          <Card>
+          <Card className="group transition-all duration-200 hover:shadow-lg">
             <CardHeader>
-              <CardTitle>Our Mission</CardTitle>
+              <CardTitle className="flex items-center gap-3">
+                <div className="bg-primary/10 group-hover:bg-primary/20 rounded-lg p-2 transition-colors">
+                  <Target className="text-primary h-6 w-6" />
+                </div>
+                Our Mission
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
@@ -34,16 +40,33 @@ export default function AboutPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="group transition-all duration-200 hover:shadow-lg">
             <CardHeader>
-              <CardTitle>Our Values</CardTitle>
+              <CardTitle className="flex items-center gap-3">
+                <div className="bg-primary/10 group-hover:bg-primary/20 rounded-lg p-2 transition-colors">
+                  <Heart className="text-primary h-6 w-6" />
+                </div>
+                Our Values
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="text-muted-foreground space-y-2">
-                <li>• Innovation through modern technology</li>
-                <li>• User-centric design and experience</li>
-                <li>• Performance and reliability first</li>
-                <li>• Transparency and trust</li>
+              <ul className="text-muted-foreground space-y-3">
+                <li className="flex items-center gap-2">
+                  <Zap className="text-primary h-4 w-4" />
+                  Innovation through modern technology
+                </li>
+                <li className="flex items-center gap-2">
+                  <Users className="text-primary h-4 w-4" />
+                  User-centric design and experience
+                </li>
+                <li className="flex items-center gap-2">
+                  <Shield className="text-primary h-4 w-4" />
+                  Performance and reliability first
+                </li>
+                <li className="flex items-center gap-2">
+                  <Heart className="text-primary h-4 w-4" />
+                  Transparency and trust
+                </li>
               </ul>
             </CardContent>
           </Card>
@@ -60,44 +83,80 @@ export default function AboutPage() {
           </p>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div>
-              <h3 className="mb-3 text-xl font-semibold">
-                Frontend Technologies
-              </h3>
-              <ul className="text-muted-foreground space-y-1">
-                <li>
-                  • <strong>Next.js 15</strong> - React framework with App
-                  Router
-                </li>
-                <li>
-                  • <strong>TypeScript</strong> - Type-safe development
-                </li>
-                <li>
-                  • <strong>Tailwind CSS</strong> - Utility-first styling
-                </li>
-                <li>
-                  • <strong>React 19</strong> - Latest React features
-                </li>
-              </ul>
-            </div>
+            <Card className="group transition-all duration-200 hover:shadow-md">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <Code className="text-primary h-6 w-6" />
+                  Frontend Technologies
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="text-muted-foreground space-y-3">
+                  <li className="flex items-center gap-2">
+                    <Code className="text-primary h-4 w-4" />
+                    <span>
+                      <strong>Next.js 15</strong> - React framework with App
+                      Router
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Shield className="text-primary h-4 w-4" />
+                    <span>
+                      <strong>TypeScript</strong> - Type-safe development
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Palette className="text-primary h-4 w-4" />
+                    <span>
+                      <strong>Tailwind CSS</strong> - Utility-first styling
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Code className="text-primary h-4 w-4" />
+                    <span>
+                      <strong>React 19</strong> - Latest React features
+                    </span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
 
-            <div>
-              <h3 className="mb-3 text-xl font-semibold">Development Tools</h3>
-              <ul className="text-muted-foreground space-y-1">
-                <li>
-                  • <strong>ESLint</strong> - Code linting and quality
-                </li>
-                <li>
-                  • <strong>Prettier</strong> - Code formatting
-                </li>
-                <li>
-                  • <strong>Turbopack</strong> - Fast bundling and builds
-                </li>
-                <li>
-                  • <strong>Git</strong> - Version control
-                </li>
-              </ul>
-            </div>
+            <Card className="group transition-all duration-200 hover:shadow-md">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <Zap className="text-primary h-6 w-6" />
+                  Development Tools
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="text-muted-foreground space-y-3">
+                  <li className="flex items-center gap-2">
+                    <Shield className="text-primary h-4 w-4" />
+                    <span>
+                      <strong>ESLint</strong> - Code linting and quality
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Palette className="text-primary h-4 w-4" />
+                    <span>
+                      <strong>Prettier</strong> - Code formatting
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Zap className="text-primary h-4 w-4" />
+                    <span>
+                      <strong>Turbopack</strong> - Fast bundling and builds
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Code className="text-primary h-4 w-4" />
+                    <span>
+                      <strong>Git</strong> - Version control
+                    </span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
