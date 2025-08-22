@@ -4,6 +4,7 @@ import './globals.css';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { ThemeProvider } from '../components/theme-provider';
+import { CartProvider } from '../contexts/CartContext';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -74,9 +75,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <CartProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </CartProvider>
         </ThemeProvider>
       </body>
     </html>

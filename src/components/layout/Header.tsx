@@ -5,12 +5,14 @@ import { Search, ShoppingCart, Menu, X } from 'lucide-react';
 import { Button } from '../ui/index';
 import { ThemeToggle } from '../theme-toggle';
 import { useState } from 'react';
+import { useCart } from '../../hooks/useCart';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { totalItems } = useCart();
 
   return (
-    <header className="bg-white dark:bg-black sticky top-0 z-50 w-full border-b">
+    <header className="sticky top-0 z-50 w-full border-b bg-white dark:bg-black">
       <div className="container flex h-16 items-center">
         {/* Logo */}
         <div className="mr-4 flex">
@@ -32,12 +34,6 @@ export function Header() {
           </Link>
           <Link
             className="text-foreground/60 hover:text-foreground/80 transition-colors"
-            href="/categories"
-          >
-            Categories
-          </Link>
-          <Link
-            className="text-foreground/60 hover:text-foreground/80 transition-colors"
             href="/about"
           >
             About
@@ -45,27 +41,35 @@ export function Header() {
         </nav>
 
         <div className="flex flex-1 items-center justify-end space-x-2">
-          {/* Search */}
-          <div className="hidden md:block">
-            <Button variant="outline" size="sm">
-              <Search className="h-4 w-4" />
-              <span className="sr-only">Search</span>
-            </Button>
-          </div>
-
           {/* Theme Toggle */}
           <ThemeToggle />
 
           {/* Cart */}
-          <Button variant="ghost" size="sm" className="hidden sm:flex">
-            <ShoppingCart className="h-4 w-4" />
-            <span className="ml-2">Cart (0)</span>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="hidden rounded-full border border-white sm:flex dark:border-black"
+            asChild
+          >
+            <Link href="/cart">
+              <ShoppingCart className="h-4 w-4" />
+              <span className="ml-2">Cart ({totalItems})</span>
+            </Link>
           </Button>
 
           {/* Mobile Cart */}
-          <Button variant="ghost" size="icon" className="sm:hidden">
-            <ShoppingCart className="h-4 w-4" />
-            <span className="sr-only">Cart</span>
+          <Button variant="ghost" size="icon" className="sm:hidden" asChild>
+            <Link href="/cart">
+              <div className="relative">
+                <ShoppingCart className="h-4 w-4" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                    {totalItems > 9 ? '9+' : totalItems}
+                  </span>
+                )}
+              </div>
+              <span className="sr-only">Cart</span>
+            </Link>
           </Button>
 
           {/* Mobile menu button */}

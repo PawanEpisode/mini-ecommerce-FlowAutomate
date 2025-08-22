@@ -8,16 +8,10 @@ import {
   CardHeader,
   CardTitle,
 } from '../../../components/ui';
-import {
-  ArrowLeft,
-  ShoppingCart,
-  Star,
-  Truck,
-  Shield,
-  RotateCcw,
-} from 'lucide-react';
+import { ArrowLeft, Star, Truck, Shield, RotateCcw } from 'lucide-react';
 import { getProductById } from '../../../lib/api';
 import { FakeStoreProduct } from '../../../types';
+import { ProductActions } from '../../../components/ProductActions';
 
 interface ProductPageProps {
   params: Promise<{
@@ -112,7 +106,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="space-y-4">
           <Card className="overflow-hidden">
             <CardContent className="p-6">
-              <div className="bg-muted aspect-square overflow-hidden rounded-lg">
+              <div className="bg-muted aspect-square overflow-hidden rounded-lg dark:bg-white">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={product.image}
@@ -128,7 +122,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="space-y-6">
           {/* Category Badge */}
           <div>
-            <span className="bg-muted text-muted-foreground inline-block rounded-full px-3 py-1 text-sm">
+            <span className="bg-muted text-muted-foreground inline-block rounded-full border px-3 py-1 text-sm dark:border-white">
               {formatCategory(product.category)}
             </span>
           </div>
@@ -171,16 +165,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
 
           {/* Actions */}
-          <div className="space-y-4">
-            <Button size="lg" className="w-full">
-              <ShoppingCart className="mr-2 h-5 w-5" />
-              Add to Cart
-            </Button>
-
-            <Button variant="outline" size="lg" className="w-full">
-              Buy Now
-            </Button>
-          </div>
+          <ProductActions product={product} />
 
           {/* Features */}
           <Card>
