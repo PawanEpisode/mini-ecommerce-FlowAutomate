@@ -1,5 +1,5 @@
-export { Button } from './button';
-export {
+import { Button, buttonVariants } from './button';
+import {
   Card,
   CardHeader,
   CardFooter,
@@ -7,3 +7,14 @@ export {
   CardDescription,
   CardContent,
 } from './card';
+
+export {
+  Button,
+  buttonVariants,
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+};

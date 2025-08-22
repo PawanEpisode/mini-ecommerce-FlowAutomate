@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
   Button,
-} from '../../components/ui/index';
+} from '../../components/ui';
 import { ShoppingCart, Star } from 'lucide-react';
 import { getAllProducts } from '../../lib/api';
 import { FakeStoreProduct } from '../../types';

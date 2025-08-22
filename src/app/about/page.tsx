@@ -4,7 +4,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from '../../components/ui/index';
+} from '../../components/ui';
 import { Target, Heart, Code, Zap, Shield, Palette, Users } from 'lucide-react';
 
 export const metadata: Metadata = {

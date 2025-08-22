@@ -7,7 +7,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from '../../../components/ui/index';
+} from '../../../components/ui';
 import {
   ArrowLeft,
   ShoppingCart,

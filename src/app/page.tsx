@@ -4,7 +4,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from '../components/ui/index';
+} from '../components/ui';
 import { Zap, Palette, Shield, Code, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
