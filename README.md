@@ -1,8 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mini Ecommerce
 
-## Getting Started
+A modern, fast, and beautiful e-commerce platform built with Next.js 15, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
+
+- ⚡ **Lightning Fast** - Built with Next.js 15 and Turbopack for optimal performance
+- 🎨 **Beautiful Design** - Modern UI with Tailwind CSS and custom components
+- 🔒 **Type Safe** - Full TypeScript support for better developer experience
+- 📱 **Responsive** - Mobile-first design that works on all devices
+- 🛠️ **Developer Experience** - ESLint, Prettier, and modern tooling
+- 🌙 **Dark Mode** - Built-in dark mode support
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 15 with App Router
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **UI Components:** Custom components with Radix-like API
+- **Code Quality:** ESLint + Prettier
+- **Fonts:** Inter (Google Fonts)
+- **Development:** Turbopack for fast builds
+
+## 📦 Project Structure
+
+```
+mini-ecommerce/
+├── src/
+│   ├── app/                    # Next.js app directory
+│   │   ├── about/             # About page
+│   │   ├── products/          # Products page
+│   │   ├── layout.tsx         # Root layout
+│   │   ├── page.tsx           # Home page
+│   │   └── globals.css        # Global styles
+│   ├── components/            # React components
+│   │   ├── ui/                # Reusable UI components
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   └── index.ts
+│   │   └── layout/            # Layout components
+│   │       ├── Header.tsx
+│   │       ├── Footer.tsx
+│   │       └── index.ts
+│   ├── hooks/                 # Custom React hooks
+│   │   └── useLocalStorage.ts
+│   ├── lib/                   # Utility functions
+│   │   └── utils.ts
+│   ├── types/                 # TypeScript type definitions
+│   │   └── index.ts
+│   └── constants/             # App constants
+│       └── index.ts
+├── public/                    # Static assets
+├── .prettierrc.json          # Prettier configuration
+├── .prettierignore           # Prettier ignore file
+├── eslint.config.mjs         # ESLint configuration
+├── next.config.ts            # Next.js configuration
+├── tailwind.config.ts        # Tailwind CSS configuration
+├── tsconfig.json             # TypeScript configuration
+└── package.json              # Dependencies and scripts
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18.17+ (recommended: use the latest LTS version)
+- npm, yarn, or pnpm
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd mini-ecommerce
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Start the development server:
 
 ```bash
 npm run dev
@@ -10,27 +93,120 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📜 Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script                 | Description                             |
+| ---------------------- | --------------------------------------- |
+| `npm run dev`          | Start development server with Turbopack |
+| `npm run build`        | Build the application for production    |
+| `npm run start`        | Start the production server             |
+| `npm run lint`         | Run ESLint to check for code issues     |
+| `npm run lint:fix`     | Run ESLint and automatically fix issues |
+| `npm run format`       | Format code with Prettier               |
+| `npm run format:check` | Check if code is properly formatted     |
+| `npm run type-check`   | Run TypeScript compiler to check types  |
 
-## Learn More
+## 🎨 Styling
 
-To learn more about Next.js, take a look at the following resources:
+This project uses Tailwind CSS v4 with a custom design system:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Colors:** Custom color palette with dark mode support
+- **Typography:** Inter font for optimal readability
+- **Components:** Utility-first approach with reusable components
+- **Responsive:** Mobile-first design principles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Color System
 
-## Deploy on Vercel
+The application uses a semantic color system:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `background` / `foreground` - Main background and text colors
+- `primary` / `primary-foreground` - Primary brand colors
+- `secondary` / `secondary-foreground` - Secondary colors
+- `muted` / `muted-foreground` - Subtle background and text
+- `accent` / `accent-foreground` - Accent colors for highlights
+- `destructive` / `destructive-foreground` - Error and danger states
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧩 Components
+
+### UI Components
+
+- **Button** - Flexible button component with multiple variants
+- **Card** - Container component for content sections
+
+All components are built with:
+
+- TypeScript for type safety
+- Forwardable refs for flexibility
+- Consistent API design
+- Full accessibility support
+
+### Layout Components
+
+- **Header** - Navigation header with responsive design
+- **Footer** - Site footer with links and information
+
+## 🔧 Configuration
+
+### ESLint
+
+The project uses a modern ESLint configuration with:
+
+- Next.js recommended rules
+- TypeScript support
+- React best practices
+- Custom rules for code quality
+
+### Prettier
+
+Code formatting is handled by Prettier with:
+
+- Tailwind CSS class sorting
+- Consistent code style
+- Automatic formatting on save
+
+### TypeScript
+
+Strict TypeScript configuration for:
+
+- Type safety
+- Better IntelliSense
+- Compile-time error catching
+
+## 🚀 Deployment
+
+The easiest way to deploy this application is using [Vercel](https://vercel.com):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/mini-ecommerce)
+
+You can also deploy to other platforms like:
+
+- [Netlify](https://netlify.com)
+- [Railway](https://railway.app)
+- [Digital Ocean App Platform](https://www.digitalocean.com/products/app-platform)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org) - React framework
+- [Tailwind CSS](https://tailwindcss.com) - CSS framework
+- [TypeScript](https://typescriptlang.org) - Type safety
+- [Vercel](https://vercel.com) - Deployment platform
+
+---
+
+Built with ❤️ using modern web technologies.
