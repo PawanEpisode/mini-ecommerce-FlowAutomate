@@ -1,5 +1,5 @@
-import { Button } from '../components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Button } from '../components/ui';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui';
 import { Zap, Palette, Shield, Code, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -9,8 +9,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-12 text-center md:py-20">
         <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl">
-          Welcome to{' '}
-          <span className="font-bold">One Piece Kart</span>
+          Welcome to <span className="font-bold">One Piece Kart</span>
         </h1>
         <p className="text-muted-foreground mx-auto mb-8 max-w-2xl text-xl">
           A modern, fast, and beautiful e-commerce platform built with Next.js,
