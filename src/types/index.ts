@@ -1,30 +1,24 @@
-export interface Product {
-  id: string;
-  name: string;
-  description: string;
+// Fake Store API Product Interface
+export interface FakeStoreProduct {
+  id: number;
+  title: string;
   price: number;
-  image: string;
+  description: string;
   category: string;
-  stock: number;
-  rating: number;
-  reviews: number;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
 }
 
 export interface CartItem {
-  product: Product;
+  product: FakeStoreProduct;
   quantity: number;
-}
-
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  avatar?: string;
 }
 
 export interface Order {
   id: string;
-  user: User;
   items: CartItem[];
   total: number;
   status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
