@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { ShoppingCart, Star } from 'lucide-react';
 import { getAllProducts } from '../../lib/api';
@@ -127,7 +132,8 @@ export default async function ProductsPage() {
         <div className="flex min-h-[400px] flex-col items-center justify-center text-center">
           <h2 className="mb-4 text-2xl font-bold">No Products Found</h2>
           <p className="text-muted-foreground">
-            We couldn't find any products at the moment. Please try again later.
+            We couldn&apos;t find any products at the moment. Please try again
+            later.
           </p>
         </div>
       )}

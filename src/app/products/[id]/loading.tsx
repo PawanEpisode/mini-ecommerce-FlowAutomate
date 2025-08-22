@@ -5,7 +5,7 @@ export default function ProductDetailLoading() {
     <div className="container py-8">
       {/* Back Button Skeleton */}
       <div className="mb-6">
-        <div className="bg-muted h-9 w-32 animate-pulse rounded-md"></div>
+        <div className="bg-muted h-9 w-32 animate-pulse rounded-md" />
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -13,7 +13,7 @@ export default function ProductDetailLoading() {
         <div className="space-y-4">
           <Card className="overflow-hidden">
             <CardContent className="p-6">
-              <div className="bg-muted aspect-square animate-pulse rounded-lg"></div>
+              <div className="bg-muted aspect-square animate-pulse rounded-lg" />
             </CardContent>
           </Card>
         </div>
@@ -21,43 +21,43 @@ export default function ProductDetailLoading() {
         {/* Product Details Skeleton */}
         <div className="space-y-6">
           {/* Category Badge Skeleton */}
-          <div className="bg-muted h-6 w-24 animate-pulse rounded-full"></div>
+          <div className="bg-muted h-6 w-24 animate-pulse rounded-full" />
 
           {/* Title and Rating Skeleton */}
           <div>
-            <div className="bg-muted mb-4 h-9 animate-pulse rounded-md"></div>
-            <div className="bg-muted mb-4 h-6 w-48 animate-pulse rounded-md"></div>
-            <div className="bg-muted mb-6 h-10 w-32 animate-pulse rounded-md"></div>
+            <div className="bg-muted mb-4 h-9 animate-pulse rounded-md" />
+            <div className="bg-muted mb-4 h-6 w-48 animate-pulse rounded-md" />
+            <div className="bg-muted mb-6 h-10 w-32 animate-pulse rounded-md" />
           </div>
 
           {/* Description Skeleton */}
           <div>
-            <div className="bg-muted mb-3 h-6 w-32 animate-pulse rounded-md"></div>
+            <div className="bg-muted mb-3 h-6 w-32 animate-pulse rounded-md" />
             <div className="space-y-2">
-              <div className="bg-muted h-4 animate-pulse rounded-md"></div>
-              <div className="bg-muted h-4 animate-pulse rounded-md"></div>
-              <div className="bg-muted h-4 w-3/4 animate-pulse rounded-md"></div>
+              <div className="bg-muted h-4 animate-pulse rounded-md" />
+              <div className="bg-muted h-4 animate-pulse rounded-md" />
+              <div className="bg-muted h-4 w-3/4 animate-pulse rounded-md" />
             </div>
           </div>
 
           {/* Actions Skeleton */}
           <div className="space-y-4">
-            <div className="bg-muted h-12 animate-pulse rounded-md"></div>
-            <div className="bg-muted h-12 animate-pulse rounded-md"></div>
+            <div className="bg-muted h-12 animate-pulse rounded-md" />
+            <div className="bg-muted h-12 animate-pulse rounded-md" />
           </div>
 
           {/* Features Card Skeleton */}
           <Card>
             <CardHeader>
-              <div className="bg-muted h-6 w-48 animate-pulse rounded-md"></div>
+              <div className="bg-muted h-6 w-48 animate-pulse rounded-md" />
             </CardHeader>
             <CardContent className="space-y-4">
               {Array.from({ length: 3 }).map((_, index) => (
                 <div key={index} className="flex items-center space-x-3">
-                  <div className="bg-muted h-5 w-5 animate-pulse rounded-md"></div>
+                  <div className="bg-muted h-5 w-5 animate-pulse rounded-md" />
                   <div className="flex-1 space-y-1">
-                    <div className="bg-muted h-4 w-32 animate-pulse rounded-md"></div>
-                    <div className="bg-muted h-3 w-48 animate-pulse rounded-md"></div>
+                    <div className="bg-muted h-4 w-32 animate-pulse rounded-md" />
+                    <div className="bg-muted h-3 w-48 animate-pulse rounded-md" />
                   </div>
                 </div>
               ))}

@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
 import {
   ArrowLeft,
@@ -60,7 +65,7 @@ export async function generateMetadata({
         ],
       },
     };
-  } catch (error) {
+  } catch {
     return {
       title: 'Product Not Found',
       description: 'The requested product could not be found.',

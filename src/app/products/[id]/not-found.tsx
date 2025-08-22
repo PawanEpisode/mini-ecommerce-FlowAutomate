@@ -13,8 +13,8 @@ export default function ProductNotFound() {
         <div className="space-y-2">
           <h1 className="text-4xl font-bold">Product Not Found</h1>
           <p className="text-muted-foreground max-w-md text-lg">
-            Sorry, we couldn't find the product you're looking for. It might
-            have been removed or the link is incorrect.
+            Sorry, we couldn&apos;t find the product you&apos;re looking for. It
+            might have been removed or the link is incorrect.
           </p>
         </div>
 
