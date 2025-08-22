@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
 import { ShoppingCart, Star } from 'lucide-react';
-import { getAllProducts } from '@/lib/api';
-import { FakeStoreProduct } from '@/types';
+import { getAllProducts } from '../../lib/api';
+import { FakeStoreProduct } from '../../types';
 
 export const metadata: Metadata = {
   title: 'Products',

@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { Search, ShoppingCart, Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { ThemeToggle } from '@/components/theme-toggle';
+import { Button } from '../ui/button';
+import { ThemeToggle } from '../theme-toggle';
 import { useState } from 'react';
 
 export function Header() {

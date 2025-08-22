@@ -1,4 +1,4 @@
-import { FakeStoreProduct } from '@/types';
+import { FakeStoreProduct } from '../types';
 
 const FAKE_STORE_API_BASE = 'https://fakestoreapi.com';
 

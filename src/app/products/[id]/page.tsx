@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
 import {
   ArrowLeft,
   ShoppingCart,
@@ -11,8 +11,8 @@ import {
   Shield,
   RotateCcw,
 } from 'lucide-react';
-import { getProductById } from '@/lib/api';
-import { FakeStoreProduct } from '@/types';
+import { getProductById } from '../../../lib/api';
+import { FakeStoreProduct } from '../../../types';
 
 interface ProductPageProps {
   params: Promise<{
