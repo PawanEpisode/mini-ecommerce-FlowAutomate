@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui';
-import { Button } from '../../components/ui';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Button,
+} from '../../components/ui/index';
 import { ShoppingCart, Star } from 'lucide-react';
 import { getAllProducts } from '../../lib/api';
 import { FakeStoreProduct } from '../../types';

@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
+  Button,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from '../../../components/ui';
-import { Button } from '../../../components/ui';
+} from '../../../components/ui/index';
 import {
   ArrowLeft,
   ShoppingCart,

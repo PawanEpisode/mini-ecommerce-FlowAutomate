@@ -1,5 +1,10 @@
-import { Button } from '../components/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '../components/ui/index';
 import { Zap, Palette, Shield, Code, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 

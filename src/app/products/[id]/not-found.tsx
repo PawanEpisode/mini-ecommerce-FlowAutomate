@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '../../../components/ui';
+import { Button } from '../../../components/ui/index';
 import { ArrowLeft, Package } from 'lucide-react';
 
 export default function ProductNotFound() {

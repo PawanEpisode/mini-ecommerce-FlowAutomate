@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Search, ShoppingCart, Menu, X } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Button } from '../ui/index';
 import { ThemeToggle } from '../theme-toggle';
 import { useState } from 'react';
 

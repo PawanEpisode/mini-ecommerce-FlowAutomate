@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from '../../components/ui';
+import { Card, CardContent, CardHeader } from '../../components/ui/index';
 
 export default function ProductsLoading() {
   return (
