@@ -151,7 +151,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             </div>
 
-            <p className="text-primary mb-6 text-4xl font-bold">
+            <p className="text-background mb-6 text-4xl font-bold">
               ${product.price.toFixed(2)}
             </p>
           </div>

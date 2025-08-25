@@ -86,7 +86,7 @@ export function ProductActions({ product }: ProductActionsProps) {
 
       {/* Show current cart status */}
       {inCart && (
-        <div className="bg-muted rounded-lg p-4">
+        <div className="border border-muted rounded-lg p-4">
           <div className="flex items-center justify-between">
             <span className="text-muted-foreground text-sm">
               Currently in cart: {currentQuantityInCart} item
