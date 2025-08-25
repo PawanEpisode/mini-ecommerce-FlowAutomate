@@ -1,8 +1,20 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Search, X, RefreshCw } from 'lucide-react';
-import { Input, Select, Button } from './ui';
+import { Filter } from 'lucide-react';
+import {
+  Button,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerFooter,
+} from './ui';
+import { SearchInput } from './SearchInput';
+import { FilterControls, FilterOption } from './FilterControls';
+import { ActiveFiltersIndicator } from './ActiveFiltersIndicator';
 import { useSearchParamsState } from '../hooks/useSearchParams';
 import { useDebounce } from '../hooks/useDebounce';
 import { getAllCategories } from '../lib/api';
@@ -16,35 +28,39 @@ export interface FilterState {
 interface ProductFiltersProps {
   onFiltersChange: (filters: FilterState) => void;
   isLoading?: boolean;
-  onRetry?: () => void;
 }
+
+const categoryAllOptions: FilterOption[] = [{ value: '', label: 'All' }];
+
+const sortOptions: FilterOption[] = [
+  { value: 'default', label: 'Default' },
+  { value: 'price-asc', label: 'Price: Low to High' },
+  { value: 'price-desc', label: 'Price: High to Low' },
+  { value: 'title-asc', label: 'Title: A to Z' },
+  { value: 'title-desc', label: 'Title: Z to A' },
+];
 
 export function ProductFilters({
   onFiltersChange,
   isLoading = false,
-  onRetry,
 }: ProductFiltersProps) {
   const { updateSearchParams, getParam } = useSearchParamsState();
   const [categories, setCategories] = useState<string[]>([]);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
-  const [searchInput, setSearchInput] = useState('');
-
-  const eraseInput = () => {
-    setSearchInput('');
-  };
-
   // Get current values from URL
   const urlSearch = getParam('search');
   const category = getParam('category');
   const sort = getParam('sort') || 'default';
 
+  // Initialize search input with URL value ONLY on mount - no further synchronization
+  const [searchInput, setSearchInput] = useState(() => urlSearch);
+
+  const eraseInput = () => {
+    setSearchInput('');
+  };
+
   // Debounce search input
   const debouncedSearch = useDebounce(searchInput, 300);
-
-  // Initialize search input from URL
-  useEffect(() => {
-    setSearchInput(urlSearch);
-  }, [urlSearch]);
 
   // Load categories on mount
   useEffect(() => {
@@ -66,12 +82,12 @@ export function ProductFilters({
   // Update URL when debounced search changes
   useEffect(() => {
     updateSearchParams({ search: debouncedSearch || null });
-  }, [debouncedSearch, updateSearchParams]);
+  }, [debouncedSearch]);
 
   // Notify parent of filter changes
   useEffect(() => {
     onFiltersChange({ search: debouncedSearch, category, sort });
-  }, [debouncedSearch, category, sort, onFiltersChange]);
+  }, [debouncedSearch, category, sort]);
 
   const handleSearchChange = (value: string) => {
     setSearchInput(value);
@@ -90,118 +106,111 @@ export function ProductFilters({
     updateSearchParams({ search: null, category: null, sort: null });
   };
 
-  const hasActiveFilters = debouncedSearch || category || sort !== 'default';
+  const hasActiveFilters =
+    !!debouncedSearch || !!category || sort !== 'default';
+
+  const categoryOptions: FilterOption[] = [
+    ...categoryAllOptions,
+    ...categories.map((category) => ({
+      value: category,
+      label: category.charAt(0).toUpperCase() + category.slice(1),
+    })),
+  ];
 
   return (
-    <div className="mb-8 space-y-4">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-4xl font-bold">Our Products</h1>
-        {onRetry && (
-          <Button
-            onClick={onRetry}
-            variant="outline"
+    <div className="mb-4 w-full sticky top-[65px] dark:bg-black bg-white z-50">
+      {/* Desktop Filters - Hidden on mobile */}
+      <div className="hidden md:block">
+        <div className="rounded-lg border p-4">
+          <FilterControls
+            searchValue={searchInput}
+            onSearchChange={handleSearchChange}
+            onSearchClear={eraseInput}
+            categoryValue={category}
+            categoryOptions={categoryOptions}
+            onCategoryChange={handleCategoryChange}
+            categoriesLoading={categoriesLoading}
+            sortValue={sort}
+            sortOptions={sortOptions}
+            onSortChange={handleSortChange}
+            onClearFilters={clearFilters}
+            hasActiveFilters={hasActiveFilters}
             disabled={isLoading}
-            className="sm:w-auto"
-          >
-            <RefreshCw
-              className={`mr-2 h-4 w-4 ${isLoading ? 'animate-spin' : ''}`}
-            />
-            Retry
-          </Button>
-        )}
+            isMobile={false}
+          />
+        </div>
       </div>
 
-      <p className="text-muted-foreground text-xl">
-        Discover our amazing collection of products from around the world.
-      </p>
+      {/* Mobile Filter Button and Drawer */}
+      <div className="md:hidden p-2">
+        <div className="mb-2 flex items-center justify-between gap-4">
+          {/* Search bar - always visible on mobile */}
+          <SearchInput
+            id="mobile-quick-search"
+            value={searchInput}
+            onChange={handleSearchChange}
+            onClear={eraseInput}
+            placeholder="Search products..."
+            disabled={isLoading}
+            className="flex-1"
+            showLabel={false}
+          />
 
-      {/* Filters */}
-      <div className="bg-card flex flex-col gap-4 rounded-lg border p-4 sm:flex-row sm:items-end">
-        {/* Search */}
-        <div className="flex-1 flex flex-col gap-2">
-          <label htmlFor="search" className="text-muted-foreground text-sm font-medium">
-            Search Products
-          </label>
-          <div className="relative">
-            <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-            <Input
-              id="search"
-              type="text"
-              placeholder="Search by title..."
-              value={searchInput}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              className="pl-9 text-muted-foreground placeholder:text-muted-foreground"
-              disabled={isLoading}
-            />
-            {searchInput && (<Button
-              variant="ghost"
-              size="icon"
-              onClick={eraseInput}
-              className="absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2"
+          {/* Filter Button */}
+          <Drawer>
+            <DrawerTrigger asChild>
+              <Button
+                variant="outline"
+                size="default"
+                className="h-11"
+                disabled={isLoading}
               >
-                <X className="text-muted-foreground" />
+                <Filter className="mr-2 h-4 w-4" />
+                Filters
+                {hasActiveFilters && (
+                  <span className="bg-primary absolute -top-1 -right-1 h-3 w-3 rounded-full" />
+                )}
               </Button>
-            )}
-          </div>
+            </DrawerTrigger>
+            <DrawerContent className="bg-white dark:bg-black">
+              <DrawerHeader>
+                <DrawerTitle>Filter Products</DrawerTitle>
+              </DrawerHeader>
+              <FilterControls
+                searchValue={searchInput}
+                onSearchChange={handleSearchChange}
+                onSearchClear={eraseInput}
+                categoryValue={category}
+                categoryOptions={categoryOptions}
+                onCategoryChange={handleCategoryChange}
+                categoriesLoading={categoriesLoading}
+                sortValue={sort}
+                sortOptions={sortOptions}
+                onSortChange={handleSortChange}
+                onClearFilters={clearFilters}
+                hasActiveFilters={hasActiveFilters}
+                disabled={isLoading}
+                isMobile={true}
+                showClearButton={false}
+              />
+              <DrawerFooter>
+                <DrawerClose asChild>
+                  <Button variant="outline">Close</Button>
+                </DrawerClose>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-col gap-2 sm:min-w-[200px]">
-          <label htmlFor="category" className="text-muted-foreground text-sm font-medium">
-            Category
-          </label>
-          <Select
-            className="text-muted-foreground"
-            id="category"
-            value={category}
-            onChange={(e) => handleCategoryChange(e.target.value)}
-            disabled={isLoading || categoriesLoading}
-          >
-            <option className="text-muted-foreground" value="">All Categories</option>
-            {categories.map((cat) => (
-              <option className="text-muted-foreground" key={cat} value={cat}>
-                {cat.charAt(0).toUpperCase() + cat.slice(1)}
-              </option>
-            ))}
-          </Select>
-        </div>
-
-        {/* Sort */}
-        <div className="flex flex-col gap-2 sm:min-w-[200px]">
-          <label htmlFor="sort" className="text-muted-foreground text-sm font-medium">
-            Sort By
-          </label>
-          <Select
-            className="text-muted-foreground"
-            id="sort"
-            value={sort}
-            onChange={(e) => handleSortChange(e.target.value)}
-            disabled={isLoading}
-          >
-            <option value="default">Default</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="title-asc">Title: A to Z</option>
-            <option value="title-desc">Title: Z to A</option>
-            <option value="rating-desc">Highest Rated</option>
-          </Select>
-        </div>
-
-        
+        {/* Active filters indicator */}
+        <ActiveFiltersIndicator
+          searchValue={searchInput}
+          categoryValue={category}
+          sortValue={sort}
+          onClearFilters={clearFilters}
+          disabled={isLoading}
+        />
       </div>
-      {/* Clear Filters */}
-      {hasActiveFilters && (
-          <Button
-            onClick={clearFilters}
-            variant="outline"
-            size="sm"
-            className="sm:mt-auto text-muted-foreground"
-            disabled={isLoading}
-          >
-            <X className="mr-2 h-4 w-4 text-muted-foreground" />
-            Remove Filters
-          </Button>
-        )}
     </div>
   );
 }

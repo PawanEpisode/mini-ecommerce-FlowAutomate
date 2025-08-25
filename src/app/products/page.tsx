@@ -6,6 +6,8 @@ import { FakeStoreProduct } from '../../types';
 import { ProductFilters, FilterState } from '../../components/ProductFilters';
 import { ProductGrid } from '../../components/ProductGrid';
 import { processProducts } from '../../lib/productUtils';
+import { Button } from '../../components/ui';
+import { RefreshCw } from 'lucide-react';
 
 export default function ProductsPage() {
   const [allProducts, setAllProducts] = useState<FakeStoreProduct[]>([]);
@@ -59,11 +61,30 @@ export default function ProductsPage() {
   }, [loadProducts]);
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 gap-4 flex flex-col">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-4xl font-bold">Our Products</h1>
+        {error && handleRetry && (
+          <Button
+            onClick={handleRetry}
+            variant="outline"
+            disabled={isLoading}
+            className="sm:w-auto"
+          >
+            <RefreshCw
+              className={`mr-2 h-4 w-4 ${isLoading ? 'animate-spin' : ''}`}
+            />
+            Retry
+          </Button>
+        )}
+      </div>
+
+      <p className="text-muted-foreground text-xl">
+        Discover our amazing collection of products from around the world.
+      </p>
       <ProductFilters
         onFiltersChange={handleFiltersChange}
         isLoading={isLoading}
-        onRetry={error ? handleRetry : undefined}
       />
 
       {/* Results count */}

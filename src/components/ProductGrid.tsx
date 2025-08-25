@@ -115,12 +115,13 @@ export function ProductGrid({
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {products.map((product) => (
-        <Card
+        <Link
+          href={`/products/${product.id}`}
           key={product.id}
-          className="group overflow-hidden transition-all duration-200 hover:shadow-lg"
+          className="h-full w-full"
         >
-          <Link href={`/products/${product.id}`}>
-            <div className="bg-muted dark:bg-white aspect-square overflow-hidden p-4">
+          <Card className="group h-full overflow-hidden transition-all duration-200 hover:shadow-lg">
+            <div className="bg-muted aspect-square overflow-hidden p-4 dark:bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={product.image}
@@ -129,43 +130,36 @@ export function ProductGrid({
                 loading="lazy"
               />
             </div>
-          </Link>
-          <CardHeader className="pb-3">
-            <div className="mb-2">
-              <span className="bg-muted text-muted-foreground rounded-full px-2 py-1 text-xs">
-                {formatCategory(product.category)}
-              </span>
-            </div>
-            <CardTitle className="line-clamp-2 text-lg">
-              <Link
-                href={`/products/${product.id}`}
-                className="hover:text-primary transition-colors"
-              >
-                {product.title}
-              </Link>
-            </CardTitle>
-            <div className="flex items-center justify-between">
-              <p className="text-primary text-2xl font-bold">
-                ${product.price.toFixed(2)}
-              </p>
-              <div className="flex items-center space-x-1">
-                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                <span className="text-muted-foreground text-sm">
-                  {product.rating.rate} ({product.rating.count})
+            <CardHeader className="pb-3">
+              <div className="mb-2">
+                <span className="bg-muted text-muted-foreground border-border rounded-full border px-2 py-1 text-xs">
+                  {formatCategory(product.category)}
                 </span>
               </div>
-            </div>
-          </CardHeader>
-          <CardContent className="flex-1 pt-0 flex flex-col items-start justify-end">
-            <p className="text-muted-foreground mb-4 line-clamp-3 text-sm">
-              {truncateDescription(product.description, 120)}
-            </p>
-            <Button className="w-full dark:bg-white dark:text-black" size="sm">
-              <ShoppingCart className="mr-2 h-4 w-4" />
-              Add to Cart
-            </Button>
-          </CardContent>
-        </Card>
+              <CardTitle className="line-clamp-2 text-lg">
+                <p className="transition-colors group-hover:text-sky-600">
+                  {product.title}
+                </p>
+              </CardTitle>
+              <div className="flex items-center justify-between">
+                <p className="text-primary text-2xl font-bold">
+                  ${product.price.toFixed(2)}
+                </p>
+                <div className="flex items-center space-x-1">
+                  <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  <span className="text-muted-foreground text-sm">
+                    {product.rating.rate} ({product.rating.count})
+                  </span>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="flex flex-1 justify-end pt-0">
+              <p className="text-muted-foreground mb-4 line-clamp-3 text-sm">
+                {truncateDescription(product.description, 120)}
+              </p>
+            </CardContent>
+          </Card>
+        </Link>
       ))}
     </div>
   );

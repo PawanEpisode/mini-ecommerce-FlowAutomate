@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ShoppingCart, Github, Twitter } from 'lucide-react';
+import { ShoppingCart, Github } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -12,23 +12,16 @@ export function Footer() {
               <span className="font-bold">One Piece Kart</span>
             </Link>
             <p className="text-muted-foreground mt-4 text-sm">
-              Your modern e-commerce solution built with Next.js and Tailwind
-              CSS.
+              Your one-stop shop for One Piece merchandise and collectibles.
             </p>
             <div className="mt-4 flex space-x-4">
               <Link
-                href="https://github.com/onepiecekart"
+                target="_blank"
+                href="https://github.com/PawanEpisode/mini-ecommerce-FlowAutomate"
                 className="text-muted-foreground hover:text-foreground"
               >
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
-              </Link>
-              <Link
-                href="https://twitter.com/onepiecekart"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
               </Link>
             </div>
           </div>
@@ -45,14 +38,6 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/categories"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Categories
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/about"
                   className="text-muted-foreground hover:text-foreground"
                 >
@@ -64,35 +49,20 @@ export function Footer() {
           <div>
             <h3 className="font-semibold">Support</h3>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Contact
-                </Link>
+              <li className="text-muted-foreground hover:text-foreground">
+                Contact
               </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  FAQ
-                </Link>
+              <li className="text-muted-foreground hover:text-foreground">
+                FAQ
               </li>
-              <li>
-                <Link
-                  href="/shipping"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Shipping
-                </Link>
+              <li className="text-muted-foreground hover:text-foreground">
+                Shipping
               </li>
             </ul>
           </div>
         </div>
         <div className="text-muted-foreground mt-8 border-t pt-8 text-center text-sm">
-          © 2024 One Piece Kart. All rights reserved.
+          © {new Date().getFullYear()} One Piece Kart. All rights reserved.
         </div>
       </div>
     </footer>

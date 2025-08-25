@@ -63,7 +63,7 @@ export default function CartPage() {
             Looks like you haven&apos;t added any items to your cart yet. Start
             shopping to fill it up!
           </p>
-          <Button size="lg" asChild>
+          <Button size="lg" asChild className='border border-white'>
             <Link href="/products">Start Shopping</Link>
           </Button>
         </div>
@@ -92,7 +92,7 @@ export default function CartPage() {
           size="sm"
           onClick={handleClearCart}
           disabled={isClearing}
-          className="border-red-300 text-red-600 hover:bg-red-50"
+          className=" dark:text-red-600 hover:bg-red-700 text-white bg-red-600 border !border-red-300 dark:!border-red-600"
         >
           <Trash2 className="mr-2 h-4 w-4" />
           {isClearing ? 'Clearing...' : 'Clear Cart'}

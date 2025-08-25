@@ -9,6 +9,19 @@ import {
 } from './Card';
 import { Input } from './Input';
 import { Select } from './Select';
+import { CustomDropdown } from './CustomDropdown';
+import {
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+} from './drawer';
 
 export {
   Button,
@@ -21,4 +34,15 @@ export {
   CardContent,
   Input,
   Select,
+  CustomDropdown,
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
 };
