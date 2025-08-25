@@ -20,9 +20,6 @@ export function ActiveFiltersIndicator({
   onClearFilters,
   disabled = false,
 }: ActiveFiltersIndicatorProps) {
-  // Check if any filters are active by comparing with default values
-  const hasActiveFilters = searchValue || categoryValue || sortValue !== defaultSortValue;
-
   // Create array of active filter names, filtering out any falsy values
   const activeFilters = [
     searchValue && 'Search',

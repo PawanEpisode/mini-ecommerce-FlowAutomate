@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ShoppingCart, Star, AlertCircle } from 'lucide-react';
+import { Star, AlertCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, Button } from './ui';
 import { FakeStoreProduct } from '../types';
 
