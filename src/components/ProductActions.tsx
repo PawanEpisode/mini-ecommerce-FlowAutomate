@@ -120,10 +120,6 @@ export function ProductActions({ product }: ProductActionsProps) {
           </div>
         </div>
       )}
-
-      <Button variant="outline" size="lg" className="w-full">
-        Buy Now
-      </Button>
     </div>
   );
 }

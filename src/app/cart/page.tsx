@@ -74,15 +74,15 @@ export default function CartPage() {
   return (
     <div className="container py-8">
       {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+      <div className="w-full mb-6 flex flex-col items-start sm:flex-row sm:items-center gap-4 justify-between">
+        <div className="w-full flex flex-col items-start sm:flex-row sm:items-center space-x-4 gap-4">
           <Button variant="outline" size="sm" asChild>
             <Link href="/products">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Continue Shopping
             </Link>
           </Button>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-xl font-bold">
             Shopping Cart ({totalItems} item{totalItems !== 1 ? 's' : ''})
           </h1>
         </div>
